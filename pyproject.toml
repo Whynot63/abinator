@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "abinator"
+version = "0.0.1"
+authors = [
+  { name="Dmitry Andreev", email="deal.d@me.com" },
+]
+description = "Python data class-like wrapper for solidity abi specification"
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Whynot63/abinator/"
+"Bug Tracker" = "https://github.com/Whynot63/abinator/issues"
+
+[tool.hatch.version]
+source = "vcs"

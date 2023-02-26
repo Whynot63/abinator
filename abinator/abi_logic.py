@@ -21,13 +21,13 @@ class Abi:
                 }
             )
 
-        for item_name in dir(cls):
+        for item_name in set(dir(cls)) - set(dir(Abi)):
             item = getattr(cls, item_name)
             if item_name == "__init__":
                 # constructor
                 ...
-            elif item_name.startswith("__"):
-                # object magic methods
+            elif item_name == "__annotations__":
+                # constants, already parsed
                 ...
             elif not callable(item):
                 if issubclass(item, Event):

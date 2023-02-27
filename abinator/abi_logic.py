@@ -1,4 +1,5 @@
-from typing import TypeVar, get_type_hints
+import inspect
+from typing import get_type_hints
 
 from .events import Event
 from .inputs import parse_input
@@ -29,10 +30,8 @@ class Abi:
             elif item_name == "__annotations__":
                 # constants, already parsed
                 ...
-            elif not callable(item):
-                if issubclass(item, Event):
-                    # events
-                    abi.append(item.to_abi_item())
+            elif inspect.isclass(item) and issubclass(item, Event):
+                abi.append(item.to_abi_item())
             else:
                 inputs = []
                 outputs = []

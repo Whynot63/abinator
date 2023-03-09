@@ -13,6 +13,18 @@ def indexed(typeVar):
 
 class Event:
     @classmethod
+    @property
+    def signature(cls):
+        inputs = [parse_input(type_)["type"] for type_ in cls.__annotations__.values()]
+        return f"{cls.__name__}({','.join(inputs)})"
+
+    @classmethod
+    @property
+    def selector(cls):
+        raise NotImplementedError
+        # return keccak(cls.signature)
+
+    @classmethod
     def to_abi_item(cls):
         inputs = []
         for name, type_ in cls.__annotations__.items():

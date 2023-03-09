@@ -1,3 +1,5 @@
+import inspect
+
 from typing import TypeVar
 from types import GenericAlias
 
@@ -23,7 +25,11 @@ def _parse_tuple(type_):
 
 
 def _parse_list(type_):
-    return {"type": str(type_.__args__[0]).lstrip("~") + "[]", "components": []}
+    internal_type = type_.__args__[0]
+    if inspect.isclass(internal_type) and issubclass(internal_type, Struct):
+        return {"type": "tuple[]", "components": internal_type.to_components()}
+
+    return {"type": str(internal_type).lstrip("~") + "[]", "components": []}
 
 
 def _parse_type(type_):

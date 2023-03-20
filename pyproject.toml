@@ -4,14 +4,14 @@ build-backend = "hatchling.build"
 
 [project]
 name = "abinator"
-version = "0.0.4"
+version = "0.0.5"
 authors = [
   { name="Dmitry Andreev", email="deal.d@me.com" },
 ]
 description = "Python data class-like wrapper for solidity abi specification"
 readme = "README.md"
 license = { file="LICENSE" }
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 classifiers = [
     "Programming Language :: Python :: 3",
 ]

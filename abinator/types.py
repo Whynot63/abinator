@@ -2,6 +2,8 @@ from typing import get_type_hints, TypeVar
 
 # https://docs.soliditylang.org/en/v0.8.13/abi-spec.html#types
 int24 = TypeVar("int24")
+...
+int256 = TypeVar("int256")
 
 uint8 = TypeVar("uint8")
 uint16 = TypeVar("uint16")
